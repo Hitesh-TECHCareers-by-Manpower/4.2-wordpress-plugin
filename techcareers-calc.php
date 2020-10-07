@@ -23,29 +23,29 @@ function techCareersCalculator ()
     $result = FALSE;
     if ( !empty( $_POST ) ) // Check if there are any values in our array!
     { // We need to do a different math operation depending on submission...
-    switch ( $_POST['op'] )
-    { // A case for each possible <option> in our form...
-        case 'addition':
-        $opSymbol = '+';
-        $result = $_POST['value1'] + $_POST['value2'];
-        break;
-        case 'subtraction':
-        $opSymbol = '-';
-        $result = $_POST['value1'] - $_POST['value2'];
-        break;
-        case 'multiplication':
-        $opSymbol = '&times;';
-        $result = $_POST['value1'] * $_POST['value2'];
-        break;
-        case 'division':
-        $opSymbol = '&divide;';
-        $result = $_POST['value1'] / $_POST['value2'];
-        break;
-    }
+        switch ( $_POST['op'] )
+        { // A case for each possible <option> in our form...
+            case 'addition':
+            $opSymbol = '+';
+            $result = $_POST['value1'] + $_POST['value2'];
+            break;
+            case 'subtraction':
+            $opSymbol = '-';
+            $result = $_POST['value1'] - $_POST['value2'];
+            break;
+            case 'multiplication':
+            $opSymbol = '&times;';
+            $result = $_POST['value1'] * $_POST['value2'];
+            break;
+            case 'division':
+            $opSymbol = '&divide;';
+            $result = $_POST['value1'] / $_POST['value2'];
+            break;
+        }
     }
     
+    ob_start();
     ?>
-
     <form method="POST" action="#">
     <label for="num1">
         Enter first operand:
@@ -89,4 +89,9 @@ function techCareersCalculator ()
         <?php echo $result; ?>
     </p>
     <?php endif;
+
+    $outputString = ob_get_clean();
+
+    return $outputString;
+
 }
